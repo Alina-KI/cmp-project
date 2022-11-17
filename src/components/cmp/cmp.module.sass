@@ -1,0 +1,25 @@
+@import 'src/variables'
+
+.table
+  display: grid
+  grid-template-columns: 1fr 7fr 2fr 2fr 2fr 2fr
+  max-height: calc(100vh - 275px)
+  width: 100%
+  overflow: auto
+  background-color: $black
+  padding: 10px
+
+  .tableHeaderElement:nth-child(n), .tableContent:nth-child(n)
+    border-bottom: 1px solid $gray
+    padding-right: 30px
+
+.tableHeaderElement
+  height: 50px
+  display: flex
+  align-items: center
+  font-family: 'Roboto', sans-serif
+  font-style: normal
+  font-weight: 500
+  font-size: 14px
+  line-height: 18px
+  color: $light-gray
