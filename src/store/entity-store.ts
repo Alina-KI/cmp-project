@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import { ListItemPayload, StoreListItem } from '../types/listItem'
 import { createEntity, createRowInEntity, deleteRow, getTreeRows, updateRow } from '../api/entity'
 import { toStoreListEntity } from '../function/to-store-list-entity'
+import { createNewList } from '../function/create-new-list'
 
 class EntityStore {
   constructor() {
@@ -25,10 +26,10 @@ class EntityStore {
       })
   }
 
-  deleteRow(rID: number) {
-    return deleteRow(this.eID, rID)
+  deleteRow(listItem: StoreListItem) {
+    return deleteRow(this.eID, listItem.id)
       .then(() => {
-        this.list.filter(item => item.id === rID)
+        this.list = createNewList(this.list, listItem)
       })
       .catch(error => {
         this.error = error.message
@@ -57,10 +58,16 @@ class EntityStore {
   createRowInEntity(parentId: number | null) {
     return createRowInEntity(this.eID, parentId)
       .then(res => {
-        parentId === null ?
+        parentId === null
+          ?
           this.list.push({ ...res.data.current, isEditMode: true, child: [] })
           :
-          this.list.find(item => item.id === parentId)?.child.push({ ...res.data.current, isEditMode: true, child: [] })
+          this.list.map(listIem => {
+            listIem.id === parentId ?
+               listIem!.child.push({ ...res.data.current, isEditMode: true, child: [] })
+            : listIem.child.find(item => item.id === parentId)?.child.push({ ...res.data.current, isEditMode: true, child: [] })
+          })
+        this.rID = res.data.current.id
       })
       .catch(error => {
         this.error = error.message
@@ -89,7 +96,6 @@ class EntityStore {
     currentItem.isEditMode = currentItem === selectedItem
     currentItem.child.forEach(item => this.setEdit(item, selectedItem))
   }
-
 
 }
 
