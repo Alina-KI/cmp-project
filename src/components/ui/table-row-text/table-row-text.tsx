@@ -15,23 +15,23 @@ export const TableRowText = observer(({ listItem, numberImage }: TableProps) => 
         <div className={s.block}>
           {
             numberImage === 1 ?
-              <Folder1 className={s.image}/>
+              <Folder1 className={s.icon}/>
               :
               numberImage === 2 ?
-                <Folder2 className={s.image} style={{marginLeft: '30px'}}/>
+                <Folder2 className={s.icon} style={{ marginLeft: '30px' }}/>
                 :
-                <File className={s.image} style={{marginLeft: '50px'}}/>
+                <File className={s.icon} style={{ marginLeft: '50px' }}/>
           }
         </div>
         <div className={s.showBlock}>
           <button className={s.iconButton} onClick={() => entityStore.createRowInEntity(null)}>
-            <Folder1 className={s.image}/>
+            <Folder1 className={s.icon}/>
           </button>
           <button className={s.iconButton} onClick={() => entityStore.createRowInEntity(listItem.id)}>
-            <Folder2 className={s.image}/>
+            <Folder2 className={s.icon}/>
           </button>
           <button className={s.iconButton} onClick={() => entityStore.createRowInEntity(listItem.id)}>
-            <File className={s.image}/>
+            <File className={s.icon}/>
           </button>
           <button className={s.iconButton} onClick={() => entityStore.deleteRow(listItem)}>
             <Delete className={s.delete}/>

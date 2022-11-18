@@ -1,5 +1,31 @@
 @import '../../../variables'
 
+.cmp
+  height: 100%
+  width: 100%
+  background: $black
+  display: flex
+  flex-direction: column
+
+.title
+  display: flex
+  flex-direction: row
+  align-items: center
+  min-height: 47px
+  max-height: 47px
+  background: $dark-gray
+  border-bottom: 1px solid $gray
+  padding: 10px 15px
+
+
+.text
+  font-family: 'Roboto', sans-serif
+  font-style: normal
+  font-weight: 400
+  font-size: 18px
+  line-height: 21px
+  color: $white
+
 .table
   display: grid
   grid-template-columns: 115px 4fr 2fr 2fr 2fr 2fr
@@ -7,7 +33,7 @@
   overflow: auto
   background-color: $black
   padding: 10px 7px 0 10px
-  height: 100%
+  height: min-content
 
   .tableHeaderElement:nth-child(n)
     border-bottom: 1px solid $gray
@@ -21,6 +47,7 @@
 .tableHeaderElement
   display: flex
   align-items: flex-start
+  height: 30px
   font-family: 'Roboto', sans-serif
   font-style: normal
   font-weight: 400
