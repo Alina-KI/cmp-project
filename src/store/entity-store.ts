@@ -1,5 +1,5 @@
 import { makeAutoObservable, toJS } from 'mobx'
-import { StoreListItem } from '../types/listItem'
+import { ListItemPayload, StoreListItem } from '../types/listItem'
 import { createEntity, createRowInEntity, deleteRow, getTreeRows, updateRow } from '../api/entity'
 import { toStoreListEntity } from '../function/toStoreListEntity'
 
@@ -10,6 +10,7 @@ class EntityStore {
 
   list: StoreListItem[] = []
   eID = 23016
+  rID = 0
   error = ''
 
 
@@ -38,12 +39,13 @@ class EntityStore {
       .finally()
   }
 
-  updateRow(listItem: StoreListItem) {
-    listItem.isEditMode = false
-    return updateRow(this.eID, listItem.id)
+  updateRow(listItem: ListItemPayload) {
+    return updateRow(this.eID, this.rID, listItem)
       .then(res => {
-        const row = this.list.find(item => item.id === listItem.id)!
-        const [changed] = res.data.changed
+        const row = this.list.find(item => item.id === this.rID)!
+        console.log(this.rID)
+        row.isEditMode = false
+        const changed = res.data.current
         row.rowName = changed.rowName
         row.salary = changed.salary
         row.equipmentCosts = changed.equipmentCosts
@@ -52,7 +54,7 @@ class EntityStore {
       })
       .catch(error => {
         this.error = error.message
-        throw new Error()
+        throw error
       })
       .finally()
   }
@@ -83,7 +85,8 @@ class EntityStore {
   }
 
   startEdit(listItem: StoreListItem) {
-    listItem.isEditMode = true
+    this.list.forEach(item => item.isEditMode = item === listItem)
+    this.rID = listItem.id
   }
 
 }
