@@ -11,12 +11,17 @@
   line-height: 130%
   color: $white
 
+  &:nth-child(n)
+    border-bottom: 1px solid $gray
+
   &:hover
     .block
       display: none
+      margin-left: 0
 
     .showBlock
       display: flex
+      margin-left: -1px
 
 .image
   width: 24px
@@ -35,6 +40,7 @@
 .block
   display: flex
   flex-direction: row
+  margin-left: 5px
 
 .showBlock
   display: none

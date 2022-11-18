@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react'
 import s from './table-row-input.module.sass'
-import { StoreListItem } from '../../../types/listItem'
 import { observer } from 'mobx-react-lite'
 import { ReactComponent as Folder1 } from '../../../assets/images/Folder1.svg'
 import { entityStore } from '../../../store/entity-store'
 import { useForm } from 'react-hook-form'
 import { Input } from '../input/input'
 import { normalizeNumber } from '../../../function/normalize-number'
-
-type Props = {
-  listItem: StoreListItem
-}
+import { TableProps } from '../../../types/table-props'
+import { ReactComponent as Folder2 } from '../../../assets/images/Folder2.svg'
+import { ReactComponent as File } from '../../../assets/images/ListIcon.svg'
 
 type Inputs = {
   rowName: string
@@ -20,8 +18,8 @@ type Inputs = {
   estimatedProfit: string
 }
 
-export const TableRowInput = observer(({ listItem }: Props) => {
-  const { control, handleSubmit, reset } = useForm<Inputs>({
+export const TableRowInput = observer(({ listItem, numberImage }: TableProps) => {
+  const { control, handleSubmit, reset } = useForm <Inputs>({
     defaultValues: { rowName: '', equipmentCosts: '', estimatedProfit: '', overheads: '', salary: '' }
   })
   useEffect(() => {
@@ -51,23 +49,41 @@ export const TableRowInput = observer(({ listItem }: Props) => {
   return (
       <>
         <div className={s.tableElement}>
-          <Folder1 className={s.image}/>
+          {
+            numberImage === 1 ?
+              <Folder1 className={s.image}/>
+              :
+              numberImage === 2 ?
+                <Folder2 className={s.image} style={{marginLeft: '10px'}}/>
+                :
+                <File className={s.image} style={{marginLeft: '20px'}}/>
+          }
         </div>
-        <Input
+        <div className={s.tableElement}>
+          <Input
           onKeyDown={handleKeyDown} placeholder={listItem.rowName}
           control={control} name={'rowName'}/>
-        <Input
+        </div>
+        <div className={s.tableElement}>
+          <Input
           onKeyDown={handleKeyDown} placeholder={listItem.salary.toString()}
           control={control} name={'salary'} normalize={normalizeNumber}/>
-        <Input
+        </div>
+        <div className={s.tableElement}>
+          <Input
           onKeyDown={handleKeyDown} placeholder={listItem.equipmentCosts.toString()}
           control={control} name={'equipmentCosts'} normalize={normalizeNumber}/>
-        <Input
+        </div>
+        <div className={s.tableElement}>
+          <Input
           onKeyDown={handleKeyDown} placeholder={listItem.overheads.toString()}
           control={control} name={'overheads'} normalize={normalizeNumber}/>
-        <Input
+        </div>
+        <div className={s.tableElement}>
+          <Input
           onKeyDown={handleKeyDown} placeholder={listItem.estimatedProfit.toString()}
           control={control} name={'estimatedProfit'} normalize={normalizeNumber}/>
+        </div>
       </>
   )
 })
