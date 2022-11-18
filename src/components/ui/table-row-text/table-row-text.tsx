@@ -8,19 +8,19 @@ import { ReactComponent as Delete } from '../../../assets/images/TrashFill.svg'
 import { entityStore } from '../../../store/entity-store'
 import { TableProps } from '../../../types/table-props'
 
-export const TableRowText = observer(({ listItem, numberImage }: TableProps) => {
+export const TableRowText = observer(({ listItem, nestingLevel }: TableProps) => {
   return (
     <>
       <div className={s.tableElement}>
         <div className={s.block}>
           {
-            numberImage === 1 ?
-              <Folder1 className={s.icon}/>
+            nestingLevel === 1 ?
+              <Folder1 className={s.icon} style={{ marginLeft: '  1px' }}/>
               :
-              numberImage === 2 ?
-                <Folder2 className={s.icon} style={{ marginLeft: '30px' }}/>
+              nestingLevel === 2 ?
+                <Folder2 className={s.icon} style={{ marginLeft: '28px' }}/>
                 :
-                <File className={s.icon} style={{ marginLeft: '50px' }}/>
+                <File className={s.icon} style={{ marginLeft: '54px' }}/>
           }
         </div>
         <div className={s.showBlock}>

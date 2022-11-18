@@ -18,7 +18,7 @@ export const CMP = observer(() => {
         <span className={s.tableHeaderElement}>Оборудование</span>
         <span className={s.tableHeaderElement}>Накладные расходы</span>
         <span className={`${s.tableHeaderElement} ${s.tableRightElement}`}>Сметная прибыль</span>
-        {entityStore.list!.map(listItem => <TableRow listItem={listItem} key={listItem.id} numberImage={1}/>)}
+        {entityStore.list!.map(listItem => <TableRow listItem={listItem} key={listItem.id} nestingLevel={1}/>)}
       </div>
     </div>
   )

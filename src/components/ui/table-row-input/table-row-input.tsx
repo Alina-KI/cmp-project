@@ -18,7 +18,7 @@ type Inputs = {
   estimatedProfit: string
 }
 
-export const TableRowInput = observer(({ listItem, numberImage }: TableProps) => {
+export const TableRowInput = observer(({ listItem, nestingLevel }: TableProps) => {
   const { control, handleSubmit, reset } = useForm<Inputs>({
     defaultValues: { rowName: '', equipmentCosts: '', estimatedProfit: '', overheads: '', salary: '' }
   })
@@ -50,13 +50,13 @@ export const TableRowInput = observer(({ listItem, numberImage }: TableProps) =>
     <>
       <div className={s.tableElement}>
         {
-          numberImage === 1 ?
-            <Folder1 className={s.icon}/>
+          nestingLevel === 1 ?
+            <Folder1 className={s.icon} style={{ marginLeft: '1px' }}/>
             :
-            numberImage === 2 ?
-              <Folder2 className={s.icon} style={{ marginLeft: '10px' }}/>
+            nestingLevel === 2 ?
+              <Folder2 className={s.icon} style={{ marginLeft: '28px' }}/>
               :
-              <File className={s.icon} style={{ marginLeft: '20px' }}/>
+              <File className={s.icon} style={{ marginLeft: '54px' }}/>
         }
       </div>
       <div className={s.tableElement}>

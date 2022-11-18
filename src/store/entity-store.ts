@@ -63,9 +63,13 @@ class EntityStore {
           this.list.push({ ...res.data.current, isEditMode: true, child: [] })
           :
           this.list.map(listIem => {
-            listIem.id === parentId ?
-               listIem!.child.push({ ...res.data.current, isEditMode: true, child: [] })
-            : listIem.child.find(item => item.id === parentId)?.child.push({ ...res.data.current, isEditMode: true, child: [] })
+            listIem.id === parentId
+              ? listIem!.child.push({ ...res.data.current, isEditMode: true, child: [] })
+              : listIem.child.find(item => item.id === parentId)?.child.push({
+                ...res.data.current,
+                isEditMode: true,
+                child: []
+              })
           })
         this.rID = res.data.current.id
       })

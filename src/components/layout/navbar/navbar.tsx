@@ -22,8 +22,8 @@ export const Navbar = () => {
           <NavbarItem title='По проекту'/>
           <NavbarItem title='Объекты'/>
           <NavbarItem title='РД'/>
-          <NavbarItem title='МТО' isSelect={true}/>
-          <NavbarItem title='СМР'/>
+          <NavbarItem title='МТО'/>
+          <NavbarItem title='СМР' isSelect={true}/>
           <NavbarItem title='График'/>
           <NavbarItem title='МиМ'/>
           <NavbarItem title='Рабочие'/>

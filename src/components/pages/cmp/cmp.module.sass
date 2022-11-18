@@ -15,16 +15,22 @@
   max-height: 47px
   background: $dark-gray
   border-bottom: 1px solid $gray
-  padding: 10px 15px
+  padding: 0 15px
 
 
 .text
+  display: flex
+  flex-direction: row
+  align-items: center
   font-family: 'Roboto', sans-serif
   font-style: normal
   font-weight: 400
   font-size: 18px
   line-height: 21px
   color: $white
+  height: 100%
+  padding-right: 15px
+  border-right: 1px solid $gray
 
 .table
   display: grid
@@ -47,7 +53,7 @@
 .tableHeaderElement
   display: flex
   align-items: flex-start
-  height: 30px
+  min-height: 30px
   font-family: 'Roboto', sans-serif
   font-style: normal
   font-weight: 400
