@@ -11,6 +11,36 @@
   line-height: 130%
   color: $white
 
+  &:hover
+    .block
+      display: none
+
+    .showBlock
+      display: flex
+
 .image
   width: 24px
   height: 24px
+
+.delete
+  width: 16px
+  height: 16px
+
+.iconButton
+  background: transparent
+  border: none
+  outline: none
+  padding: 0
+
+.block
+  display: flex
+  flex-direction: row
+
+.showBlock
+  display: none
+  align-items: center
+  justify-content: space-between
+  width: 110px
+  background: $gray
+  border-radius: 6px
+  padding: 3px 7px

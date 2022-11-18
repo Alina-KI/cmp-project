@@ -11,7 +11,7 @@ export type ListItem = {
   "equipmentCosts": number,
   "overheads": number,
   "estimatedProfit": number,
-  "child": ListItem[]
+  "child": StoreListItem[]
 }
 
 export type StoreListItem = ListItem & {

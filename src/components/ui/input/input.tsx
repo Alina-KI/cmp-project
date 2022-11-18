@@ -4,14 +4,13 @@ import { useController, UseControllerProps } from 'react-hook-form'
 
 type Props = UseControllerProps<any, any> & InputHTMLAttributes<HTMLInputElement> & {
   normalize?: (value: string) => any
-  className: string
 }
 
-export const Input = ({ normalize = (v: string) => v, control, name, className, ...props }: Props) => {
+export const Input = ({ normalize = (v: string) => v, control, name, ...props }: Props) => {
   const { field } = useController({ control, name })
   return (
     <input
-      className={`${s.inputElement} ${className}`} {...props}
+      className={s.inputElement} {...props}
       {...field} onChange={(e) => field.onChange(normalize(e.target.value))}/>
   )
 }
