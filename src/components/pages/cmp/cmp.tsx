@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './cmp.module.sass'
-import { entityStore } from '../../store/entity-store'
-import { TableRow } from '../ui/table-row/table-row'
+import { entityStore } from '../../../store/entity-store'
+import { TableRow } from '../../ui/table-row/table-row'
 import { observer } from 'mobx-react-lite'
 
 export const CMP = observer(() => {

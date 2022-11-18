@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import s from './navbar.module.sass'
-import { ReactComponent as Arrow } from '../../assets/images/Arrow.svg'
+import { ReactComponent as Arrow } from '../../../assets/images/Arrow.svg'
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
