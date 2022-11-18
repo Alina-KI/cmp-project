@@ -2,24 +2,29 @@
 
 .table
   display: grid
-  grid-template-columns: 1fr 7fr 2fr 2fr 2fr 2fr
-  max-height: calc(100vh - 275px)
+  grid-template-columns: 110px 4fr 2fr 2fr 2fr 2fr
   width: 100%
   overflow: auto
   background-color: $black
-  padding: 10px
+  padding: 10px 7px 0 10px
+  height: 100%
 
   .tableHeaderElement:nth-child(n), .tableContent:nth-child(n)
     border-bottom: 1px solid $gray
-    padding-right: 30px
+
+.tableLeftElement
+  padding-left: 10px
+
+.tableRightElement
+  padding-right: 10px
 
 .tableHeaderElement
-  height: 50px
+  height: 30px
   display: flex
-  align-items: center
+  align-items: flex-start
   font-family: 'Roboto', sans-serif
   font-style: normal
-  font-weight: 500
+  font-weight: 400
   font-size: 14px
-  line-height: 18px
+  line-height: 130%
   color: $light-gray
