@@ -15,13 +15,17 @@ export const TableRowText = observer(({ listItem, nestingLevel, parent }: TableP
       <div className={s.tableElement}>
         <BlockIconLine listItem={listItem} nestingLevel={nestingLevel}/>
         <div className={s.showBlock}>
+          {nestingLevel === 1 &&
           <button className={s.iconButton} onClick={() => entityStore.createRowInEntity(null)}>
             <Folder1 className={s.icon}/>
           </button>
+          }
+          {(nestingLevel >= 1 && nestingLevel < 3) &&
           <button className={s.iconButton}
                   onClick={() => entityStore.createRowInEntity(parent ? parent.id : listItem.id)}>
             <Folder2 className={s.icon}/>
           </button>
+          }
           <button className={s.iconButton} onClick={() => entityStore.createRowInEntity(listItem.id)}>
             <File className={s.icon}/>
           </button>

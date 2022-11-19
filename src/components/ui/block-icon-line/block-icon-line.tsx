@@ -19,19 +19,19 @@ export const BlockIconLine = observer(({listItem, nestingLevel}: Props) => {
         nestingLevel === 1
           ?
           <div className={s.blockWithLine}>
-            <Folder1 className={s.icon} style={{ marginLeft: '  1px' }}/>
+            <Folder1 className={s.icon} style={{ marginLeft: '  2px' }}/>
             <div className={s.verticalLine} style={{ height: `${60 * getNestedItemsCount(listItem) - 7}px` }}/>
           </div>
           : nestingLevel === 2
             ?
             <div className={s.blockWithLine}>
-              <Folder2 className={s.icon} style={{ marginLeft: '28px' }}/>
+              <Folder2 className={s.icon} style={{ marginLeft: '26px' }}/>
               <div className={s.verticalLine} style={{ height: `${60 * getNestedItemsCount(listItem) - 7}px` }}/>
               <div className={s.horizontalLine}/>
             </div>
             :
             <div className={s.blockWithLine}>
-              <File className={s.icon} style={{ marginLeft: '54px' }}/>
+              <File className={s.icon} style={{ marginLeft: '50px' }}/>
               <div className={s.horizontalLine} style={{right: '19px'}}/>
             </div>
       }
