@@ -7,27 +7,40 @@ import { ReactComponent as File } from '../../../assets/images/ListIcon.svg'
 import { ReactComponent as Delete } from '../../../assets/images/TrashFill.svg'
 import { entityStore } from '../../../store/entity-store'
 import { TableProps } from '../../../types/table-props'
+import { getNestedItemsCount } from '../../../function/get-nested-items-count'
 
-export const TableRowText = observer(({ listItem, nestingLevel }: TableProps) => {
+export const TableRowText = observer(({ listItem, nestingLevel, parent }: TableProps) => {
   return (
     <>
       <div className={s.tableElement}>
         <div className={s.block}>
           {
-            nestingLevel === 1 ?
-              <Folder1 className={s.icon} style={{ marginLeft: '  1px' }}/>
-              :
-              nestingLevel === 2 ?
-                <Folder2 className={s.icon} style={{ marginLeft: '28px' }}/>
+            nestingLevel === 1
+              ?
+              <div className={s.blockWithLine}>
+                <Folder1 className={s.icon} style={{ marginLeft: '  1px' }}/>
+                <div className={s.verticalLine} style={{ height: `${60 * getNestedItemsCount(listItem) - 7}px` }}/>
+              </div>
+              : nestingLevel === 2
+                ?
+                <div className={s.blockWithLine}>
+                  <Folder2 className={s.icon} style={{ marginLeft: '28px' }}/>
+                  <div className={s.verticalLine} style={{ height: `${60 * getNestedItemsCount(listItem) - 7}px` }}/>
+                  <div className={s.horizontalLine}/>
+                </div>
                 :
-                <File className={s.icon} style={{ marginLeft: '54px' }}/>
+                <div className={s.blockWithLine}>
+                  <File className={s.icon} style={{ marginLeft: '54px' }}/>
+                  <div className={s.horizontalLine} style={{right: '19px'}}/>
+                </div>
           }
         </div>
         <div className={s.showBlock}>
           <button className={s.iconButton} onClick={() => entityStore.createRowInEntity(null)}>
             <Folder1 className={s.icon}/>
           </button>
-          <button className={s.iconButton} onClick={() => entityStore.createRowInEntity(listItem.id)}>
+          <button className={s.iconButton}
+                  onClick={() => entityStore.createRowInEntity(parent ? parent.id : listItem.id)}>
             <Folder2 className={s.icon}/>
           </button>
           <button className={s.iconButton} onClick={() => entityStore.createRowInEntity(listItem.id)}>

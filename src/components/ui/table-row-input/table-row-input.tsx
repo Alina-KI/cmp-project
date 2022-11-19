@@ -50,17 +50,15 @@ export const TableRowInput = observer(({ listItem, nestingLevel }: TableProps) =
     <>
       <div className={s.tableElement}>
         {
-          nestingLevel === 1 ?
-            <Folder1 className={s.icon} style={{ marginLeft: '1px' }}/>
-            :
-            nestingLevel === 2 ?
-              <Folder2 className={s.icon} style={{ marginLeft: '28px' }}/>
-              :
-              <File className={s.icon} style={{ marginLeft: '54px' }}/>
+          nestingLevel === 1
+            ? <Folder1 className={s.icon} style={{ marginLeft: '4px' }}/>
+            : nestingLevel === 2
+              ? <Folder2 className={s.icon} style={{ marginLeft: '31px' }}/>
+              : <File className={s.icon} style={{ marginLeft: '57px' }}/>
         }
       </div>
       <div className={s.tableElement}>
-        <Input
+        <Input autoFocus={true}
           onKeyDown={handleKeyDown} placeholder={listItem.rowName}
           control={control} name={'rowName'}/>
       </div>

@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import { ListItemPayload, StoreListItem } from '../types/listItem'
 import { createEntity, createRowInEntity, deleteRow, getTreeRows, updateRow } from '../api/entity'
 import { toStoreListEntity } from '../function/to-store-list-entity'
-import { removeItemById } from '../function/create-new-list'
+import { removeItemById } from '../function/remove-item-by-id'
 
 class EntityStore {
   constructor() {
