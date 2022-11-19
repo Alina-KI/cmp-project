@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import { ListItemPayload, StoreListItem } from '../types/listItem'
 import { createEntity, createRowInEntity, deleteRow, getTreeRows, updateRow } from '../api/entity'
 import { toStoreListEntity } from '../function/to-store-list-entity'
-import { createNewList } from '../function/create-new-list'
+import { removeItemById } from '../function/create-new-list'
 
 class EntityStore {
   constructor() {
@@ -29,7 +29,7 @@ class EntityStore {
   deleteRow(listItem: StoreListItem) {
     return deleteRow(this.eID, listItem.id)
       .then(() => {
-        this.list = createNewList(this.list, listItem)
+        removeItemById(this.list, listItem.id)
       })
       .catch(error => {
         this.error = error.message
