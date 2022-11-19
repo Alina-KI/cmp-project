@@ -1,0 +1,32 @@
+@import "src/variables"
+
+.block
+  display: flex
+  flex-direction: row
+  margin-left: 5px
+  position: relative
+
+.icon
+  width: 24px
+  height: 24px
+  z-index: 3
+
+.blockWithLine
+  display: flex
+  flex-direction: row
+  position: relative
+
+.verticalLine
+  position: absolute
+  width: .5px
+  background: $color-line
+  right: 12px
+  top: 20px
+
+.horizontalLine
+  position: absolute
+  width: 19px
+  height: 1px
+  background: $color-line
+  top: 50%
+  right: 20px

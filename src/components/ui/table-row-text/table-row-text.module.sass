@@ -15,11 +15,8 @@
     border-bottom: 1px solid $gray
 
   &:hover
-    .block
-      display: none
-      margin-left: 0
-
     .showBlock
+      position: absolute
       display: flex
       margin-left: -1px
 
@@ -41,32 +38,6 @@
   border: none
   outline: none
   padding: 0
-
-.block
-  display: flex
-  flex-direction: row
-  margin-left: 5px
-  position: relative
-
-.blockWithLine
-  display: flex
-  flex-direction: row
-  position: relative
-
-.verticalLine
-  position: absolute
-  width: .5px
-  background: $color-line
-  right: 12px
-  top: 20px
-
-.horizontalLine
-  position: absolute
-  width: 19px
-  height: 1px
-  background: $color-line
-  top: 50%
-  right: 20px
 
 .showBlock
   display: none

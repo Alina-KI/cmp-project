@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react'
 import s from './table-row-input.module.sass'
 import { observer } from 'mobx-react-lite'
-import { ReactComponent as Folder1 } from '../../../assets/images/Folder1.svg'
-import { ReactComponent as Folder2 } from '../../../assets/images/Folder2.svg'
-import { ReactComponent as File } from '../../../assets/images/ListIcon.svg'
 import { entityStore } from '../../../store/entity-store'
 import { useForm } from 'react-hook-form'
 import { Input } from '../input/input'
 import { normalizeNumber } from '../../../function/normalize-number'
 import { TableProps } from '../../../types/table-props'
+import { BlockIconLine } from '../block-icon-line/block-icon-line'
 
 type Inputs = {
   rowName: string
@@ -49,13 +47,7 @@ export const TableRowInput = observer(({ listItem, nestingLevel }: TableProps) =
   return (
     <>
       <div className={s.tableElement}>
-        {
-          nestingLevel === 1
-            ? <Folder1 className={s.icon} style={{ marginLeft: '4px' }}/>
-            : nestingLevel === 2
-              ? <Folder2 className={s.icon} style={{ marginLeft: '31px' }}/>
-              : <File className={s.icon} style={{ marginLeft: '57px' }}/>
-        }
+        <BlockIconLine listItem={listItem} nestingLevel={nestingLevel}/>
       </div>
       <div className={s.tableElement}>
         <Input autoFocus={true}
